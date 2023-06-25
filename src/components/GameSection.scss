@@ -4,5 +4,11 @@
   justify-content: space-evenly;
   align-items: center;
   margin-bottom: 5rem;
-  width: min(100%, 1024px);
+  width: 1024px;
+}
+
+@media (max-width: 600px) {
+  .main-container {
+    width: 80%
+  }
 }
