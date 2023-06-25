@@ -1,0 +1,27 @@
+.search-bar {
+  height: 3ch;
+  width: 40rem;
+  padding: .5rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 2rem;
+  background-color: #001533;
+  border: 5px solid #B3FFFB;
+  max-width: 45%;
+  color: #599BCF;
+  font-family: 'Teko', sans-serif;
+  margin-bottom: 1.5rem;
+  
+  &::placeholder {
+    color: inherit;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+@media (max-width: 375px) {
+  .search-bar {
+    width: 300px;
+    border: 2px solid #B3FFFB;
+  }
+}

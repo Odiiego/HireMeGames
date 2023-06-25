@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none; 
+
+  &__title {
+    font-family: 'Press Start 2P', monospace;
+    text-transform: uppercase;
+    font-size: 80px;
+    line-height: 100px;
+    text-align: right;
+    color: #B3FFFB;
+    text-shadow: 15px 15px 0 #CA45D7;
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 375px) {
+  .header {
+    &__title {
+      font-family: 'Press Start 2P', monospace;
+      text-transform: uppercase;
+      font-size: 49px;
+      line-height: 70px;
+      text-align: right;
+      color: #B3FFFB;
+      text-shadow: 15px 15px 0 #CA45D7;
+      margin-right: 20px;
+    }
+    &__img {
+      display: none;
+    }
+  }
+}
