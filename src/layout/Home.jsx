@@ -1,6 +1,7 @@
 import React from 'react';
 import load from '../assets/load.gif';
 import GameListContext from '../context/GameListContext';
+
 import GameList from '../components/GameList';
 import Header from '../components/Header';
 import Error from '../components/Error';
@@ -12,7 +13,7 @@ const Home = () => {
     <>
       <Header />
       {error && <Error error={error} />}
-      {loading ? (
+      {loading && !error ? (
         <img className="loading" src={load} width={'75px'} />
       ) : (
         data && <GameList />

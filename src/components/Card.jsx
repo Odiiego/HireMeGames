@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Stars from './Stars';
+import Bookmark from './Bookmark';
+import GameListContext from '../context/GameListContext';
 import './Card.scss';
 
 const Card = ({ game }) => {
+  const { dataStatus } = React.useContext(GameListContext);
   const modal = React.useRef(null);
-  console.log(game);
 
   return (
     <article className="card">
+      {dataStatus && <Stars id={game.id} />}
+      {dataStatus && <Bookmark id={game.id} />}
       <h2 className="card__title">{game.title}</h2>
       <img
         className="card__img"

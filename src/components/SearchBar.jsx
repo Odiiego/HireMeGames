@@ -4,7 +4,8 @@ import filterByTitle from '../utils/filterByTitle';
 import GameListContext from '../context/GameListContext';
 
 const SearchBar = () => {
-  const { data, setFilteredData } = React.useContext(GameListContext);
+  const { data, setFilteredData, filteredData } =
+    React.useContext(GameListContext);
   const searchValue = React.useRef(null);
 
   function handleFilter() {
@@ -16,7 +17,7 @@ const SearchBar = () => {
     if (filter === '') {
       setFilteredData(data);
     } else {
-      setFilteredData(filterByTitle(data, filter));
+      setFilteredData(filterByTitle(filteredData, filter));
     }
   }
 

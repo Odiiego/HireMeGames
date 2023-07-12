@@ -1,0 +1,32 @@
+@mixin star-config() {
+  visibility: hidden;
+  cursor: pointer;
+  font-size: 25px;
+  line-height: 25px;
+}
+
+.star-container {
+  margin: 0;
+  padding: 0;
+  border: none;
+  height: 25px;
+  
+  .star-rating {
+    @include star-config;
+
+    &::before {
+      content: "\2606";
+      visibility: visible;
+    }
+    
+    &--active {
+      @include star-config;
+
+      &::before {
+        visibility: visible;
+        content: "\2605";
+        color: goldenrod;
+      }
+    }
+  }
+}
