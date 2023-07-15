@@ -2,37 +2,41 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 2rem;
 
   &__tag {
     display: flex;
     flex-flow: wrap row;
-    justify-content: flex-end;
     font-family: 'Teko', sans-serif;
     text-align: right;
-    width: 20rem;
-    font-size: 2rem;
-    line-height: 2rem;
+    width: 21ch;
+    font-size: 1.75rem;
+    line-height: 1.75rem;
     color: #599BCF;
-    padding: 1.5rem 2rem;
+    padding: 2rem 1.5rem;
     border-right: 5px solid #599BCF;
   }
 
   &__btn__container {
+    &__btn:hover {
+      color: #599BCF;
+    }
+
     &__btn, &__btn--active {
+      height: 2rem;
+      line-height: 1.5rem;
       font-size: 1.1rem;
       font-family: 'Teko', sans-serif;
-      font-weight: 700;
+      font-weight: bold;
       text-transform: uppercase;
       background-color: #001533;
-      border: 5px solid #B3FFFB;
+      border: 2px solid #B3FFFB;
       border-radius: 2rem;
       width: 16ch;
       padding: .2rem 0;
-      margin: 0 0 10px 15px;
+      margin: 0 0 10px 10px;
       color: #B3FFFB;
       cursor: pointer;
-      
+
       &--active {
         background-color: #B3FFFB;
         color: #001533;
@@ -47,18 +51,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 70%;
+    width: 90%;
 
     &__tag {
-      border: 1px solid goldenrod;
       justify-content: center;
-      margin: 0;
+      margin: 1rem 0 0.2rem 0;
+      padding: 0;
       border: none;
     }
+
     &__btn__container {
       display: flex;
       flex-flow: row wrap;
       justify-content: center;
+
       &__btn, &__btn--active {
         margin: 0;
         border: 2px solid #B3FFFB;

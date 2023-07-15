@@ -1,0 +1,88 @@
+@mixin control-btn() {
+  width: 23ch;
+  height: 2.5rem;
+  line-height: 2.4rem;
+  font-size: 1.1rem;
+  font-family: 'Teko', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #001533;
+  border: 2px solid #B3FFFB;
+  color: #B3FFFB;
+  cursor: pointer;
+
+  &:hover {
+    color: #599BCF;
+  }
+
+  &--active {
+    background-color: #B3FFFB;
+    color: #001533;
+  }
+}
+.filter-control-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #B3FFFB;
+}
+
+.filter-control {
+  display: flex;
+  transform: translateY(2px);
+  justify-content: flex-end;
+  padding: 5px 7px;
+  align-items: start;
+  box-sizing: border-box;
+  width: fit-content;
+  border: 2px solid #B3FFFB;
+  border-bottom: none;
+  border-radius: 30px 30px 0 0;
+  height: 3.1rem;
+  margin-top: 1rem;
+  background-color: #010E21;
+
+  &__btn {
+    &-container {
+      display: flex;
+      position: relative;
+      font-size: 1.1rem;
+      font-weight: bold;
+      width: 23ch;
+      height: 2.5rem;
+    }
+
+    &--favorites {
+      @include control-btn;
+      padding-left: 1.2rem;
+      border-radius: 2rem 0 0 2rem;
+    }
+
+    &--ratings {
+      @include control-btn;
+      padding-right: 1.2rem;
+      border-radius: 0 2rem 2rem 0;
+    }
+
+    &--ratings-direction {
+      @include control-btn;
+      position: absolute;
+      right: 0;
+      top: 0.25rem;
+      margin-right: 0.25rem;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 2rem;
+      line-height: 1.5rem;
+      
+      &:hover {
+        background-color: #B3FFFB;
+        color: #001533;
+      }
+    }
+  }
+  &::before {
+    display: block;
+    content: '';
+  }
+}
