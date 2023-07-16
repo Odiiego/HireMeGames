@@ -123,7 +123,31 @@
       &--ratings,
       &--ratings--active {
         @include control-btn;
-        width: 19ch;
+        width: 23ch;
+        padding-right: 2.2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .filter-control {
+    &__btn {
+      &-container {
+        width: 23ch;
+      }
+
+      &--favorites,
+      &--favorites--active {
+        @include control-btn;
+        width: 23ch;
+        padding-left: 2.2rem;
+      }
+
+      &--ratings,
+      &--ratings--active {
+        @include control-btn;
+        width: 23ch;
         padding-right: 2.2rem;
       }
     }
