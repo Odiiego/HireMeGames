@@ -3,12 +3,17 @@ import './SearchBar.scss';
 import GameListContext from '../context/GameListContext';
 
 const SearchBar = () => {
-  const { data } = React.useContext(GameListContext);
+  const { filter, setFilter } = React.useContext(GameListContext);
   const searchValue = React.useRef(null);
+
+  function handleEvent() {
+    setFilter({ ...filter, title: searchValue.current.value });
+  }
 
   return (
     <div className="search-container">
       <input
+        onKeyUp={handleEvent}
         placeholder="Search by Title..."
         ref={searchValue}
         type="text"
@@ -16,7 +21,9 @@ const SearchBar = () => {
         id="searchBar"
         className="search-bar"
       />
-      <button className="search-bar__btn">Search</button>
+      <button onClick={handleEvent} className="search-bar__btn">
+        Search
+      </button>
     </div>
   );
 };

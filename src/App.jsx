@@ -2,16 +2,19 @@ import React from 'react';
 import './App.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import { db } from './firebase';
 
 import GameListContext from './context/GameListContext';
 import useFetch from './hooks/useFetch';
 import Home from './layout/Home';
+import Signup from './layout/Signup';
+import Login from './layout/Login';
 
 function App() {
   const [userData, setUserData] = React.useState();
-  const [genreList, setGenreList] = React.useState();
+  const [genreList, setGenreList] = React.useState(null);
+  const [filter, setFilter] = React.useState({ genre: null, title: null });
   const [sortByRating, setSortByRating] = React.useState(false);
   const [sortingDirection, setSortingDirection] = React.useState(true);
   const [filterBookmarkedStatus, setFilterBookmarkedStatus] =
@@ -19,18 +22,7 @@ function App() {
   const { data, error, loading, request } = useFetch();
   const { currentUser } = getAuth();
 
-  // React.useEffect(() => {
-  //   if (userData) {
-  //     setDoc(doc(db, 'users', String(userData.uid)), {
-  //       [userData.uid]: {
-  //         ratings: userRatings,
-  //         bookmarks: userBookmarks,
-  //       },
-  //     });
-  //   }
-  // }, [userRatings, userBookmarks]);
-
-  // fetch dessa api maravilhosa
+  // fetch dessa api maravilhosa s2
   React.useEffect(() => {
     request('https://games-test-api-81e9fb0d564a.herokuapp.com/api/data', {
       method: 'GET',
@@ -54,6 +46,8 @@ function App() {
   return (
     <GameListContext.Provider
       value={{
+        filter,
+        setFilter,
         data,
         error,
         loading,
@@ -72,8 +66,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* <Route path="/auth/signup" element={<Signup />} />
-          <Route path="/auth/login"element={<Login />} /> */}
+          <Route path="/auth/signup" element={<Signup />} />
+          <Route path="/auth/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </GameListContext.Provider>

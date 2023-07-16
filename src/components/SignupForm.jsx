@@ -1,4 +1,5 @@
 import React from 'react';
+import './form.scss';
 import { useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
@@ -7,27 +8,30 @@ function SignupForm() {
   const navigate = useNavigate();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [errorMessage, setErrorMessage] = React.useState(null);
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     await createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
-        console.log(user);
         navigate('/auth/login');
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        setErrorMessage(errorMessage);
       });
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <form onSubmit={handleSubmit} className="form">
+      {errorMessage && (
+        <h2 className="error-message form-error-message">{errorMessage}</h2>
+      )}
+      <label className="form__label">
         Email Address
         <input
+          className="form__input--email"
           type="email"
           label="Email Address"
           placeholder="Email Address"
@@ -36,9 +40,10 @@ function SignupForm() {
           required
         />
       </label>
-      <label>
-        Password
+      <label className="form__label">
+        Password [must contain at least 6 digits]
         <input
+          className="form__input--password"
           type="password"
           label="Create password"
           placeholder="Password"
@@ -47,7 +52,9 @@ function SignupForm() {
           required
         />
       </label>
-      <button type="submit">Sign Up</button>
+      <button className="form__submit" type="submit">
+        Sign Up
+      </button>
     </form>
   );
 }

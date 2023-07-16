@@ -1,4 +1,5 @@
 import React from 'react';
+import './form.scss';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
@@ -7,21 +8,30 @@ function SigninForm() {
   const navigate = useNavigate();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [errorMessage, setErrorMessage] = React.useState(null);
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    await signInWithEmailAndPassword(auth, email, password).then(({ user }) => {
-      console.log(user);
-      navigate('/');
-    });
+    await signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        navigate('/');
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setErrorMessage(errorMessage);
+      });
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <form onSubmit={handleSubmit} className="form">
+      {errorMessage && (
+        <h2 className="error-message form-error-message">{errorMessage}</h2>
+      )}
+      <label className="form__label">
         Email Address
         <input
+          className="form__input--email"
           type="email"
           label="Email Address"
           placeholder="Email Address"
@@ -30,9 +40,10 @@ function SigninForm() {
           required
         />
       </label>
-      <label>
+      <label className="form__label">
         Password
         <input
+          className="form__input--password"
           type="password"
           label="Create password"
           placeholder="Password"
@@ -41,7 +52,9 @@ function SigninForm() {
           required
         />
       </label>
-      <button type="submit">Login</button>
+      <button className="form__submit" type="submit">
+        Login
+      </button>
     </form>
   );
 }

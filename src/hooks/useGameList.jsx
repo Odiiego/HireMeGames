@@ -1,7 +1,4 @@
 import React from 'react';
-
-import useUpdateFirebase from './useUpdateFirebase';
-
 import GameListContext from '../context/GameListContext';
 import createGenreList from '../utils/createGenreList';
 
@@ -11,6 +8,7 @@ function useGameList(
   filterGameList = { genre: null, title: null },
 ) {
   const {
+    genreList,
     setGenreList,
     sortByRating,
     setSortByRating,
@@ -24,10 +22,11 @@ function useGameList(
   const { genre, title } = filterGameList;
   let gameList = games.sort((a, b) => a.id - b.id);
   let genreArr;
-  let errorMessage = null;
 
   React.useEffect(() => {
-    setGenreList(genreArr);
+    if (genreArr && genreArr.length > 0) {
+      setGenreList(genreArr);
+    }
   }, [genreArr]);
 
   function toggleSortingDirection({ target }) {
@@ -70,7 +69,9 @@ function useGameList(
   });
 
   //criar uma lista dos gêneros ordenada pelo id dos jogos:
-  genreArr = createGenreList(gameList);
+  if (!genreList) {
+    genreArr = createGenreList(gameList);
+  }
 
   // organizar gameListay por Rating:
   if (sortByRating) {
@@ -86,19 +87,18 @@ function useGameList(
 
   // filtrar por gênero ou titulo:
   if (genre) {
-    gameList = gameList.filter((game) => game.genre == genre);
+    gameList = gameList.filter(
+      (game) => game.genre.toLowerCase() == genre.toLowerCase(),
+    );
   }
 
   // filtrar por titulo:
   if (title) {
-    gameList = gameList.filter((game) => game.title.includes(title));
-  }
-
-  // apresentar uma mensagem caso a lista esteja vazia:
-  if (gameList.length == 0) {
-    errorMessage = `No game on the ${
-      filterBookmarkedStatus ? 'favorites list' : 'list'
-    } has the ${filter} "${filterValue}"`;
+    gameList = gameList.filter((game) => {
+      const a = game.title.toLowerCase();
+      const b = title.toLowerCase();
+      return a.includes(b);
+    });
   }
 
   return {

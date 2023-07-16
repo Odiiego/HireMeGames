@@ -11,16 +11,16 @@
   position: relative;
   width: 45ch;
   height: 1.75rem;
-  padding: .25rem 1.5rem;
+  padding: 0.25rem 1.5rem;
   font-size: 1.5rem;
   background-color: transparent;
-  border: 2px solid #B3FFFB;
+  border: 2px solid #b3fffb;
   border-radius: 2rem;
-  font-family: 'Teko', sans-serif;
-  color: #599BCF;
+  font-family: "Teko", sans-serif;
+  color: #599bcf;
 
   &::placeholder {
-    color: #599BCF;
+    color: #599bcf;
   }
 
   &:focus {
@@ -36,20 +36,20 @@
     right: 0;
     bottom: 5;
     margin-right: 5px;
-    border: 2px solid #B3FFFB;
+    border: 2px solid #b3fffb;
     border-radius: 2rem;
     font-size: 1.1rem;
-    font-family: 'Teko', sans-serif;
+    font-family: "Teko", sans-serif;
     text-transform: uppercase;
     background-color: transparent;
-    color: #B3FFFB;
+    color: #b3fffb;
     width: 16ch;
 
     &:hover {
-      color: #599BCF;
+      color: #599bcf;
     }
     &:active {
-      background-color: #B3FFFB;
+      background-color: #b3fffb;
       color: #001533;
     }
   }

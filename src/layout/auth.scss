@@ -1,0 +1,15 @@
+.auth {
+  &__title {
+    font-family: "Teko", sans-serif;
+    color: #599bcf;
+  }
+  &__text {
+    font-family: "Teko", sans-serif;
+    color: #599bcf;
+    font-size: 1.5rem;
+    a {
+      margin-left: 1ch;
+      color: #b3fffb;
+    }
+  }
+}

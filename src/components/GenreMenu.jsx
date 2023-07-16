@@ -1,8 +1,19 @@
 import React from 'react';
 
+import GameListContext from '../context/GameListContext';
 import './GenreMenu.scss';
 
-function GenreMenu({ genreList }) {
+function GenreMenu() {
+  const { filter, setFilter, genreList } = React.useContext(GameListContext);
+
+  function handleClick({ target }) {
+    const filterValue =
+      target.innerText.toLowerCase() == filter.genre
+        ? null
+        : target.innerText.toLowerCase();
+    setFilter({ ...filter, genre: filterValue });
+  }
+
   return (
     <nav className="navbar">
       <p className="navbar__tag">Filter By Genre</p>
@@ -10,7 +21,13 @@ function GenreMenu({ genreList }) {
         {genreList &&
           genreList.map((genre) => {
             return (
-              <button className="navbar__btn__container__btn" key={genre}>
+              <button
+                onClick={handleClick}
+                className={`navbar__btn__container__btn${
+                  genre == filter.genre ? '--active' : ''
+                }`}
+                key={genre}
+              >
                 {genre}
               </button>
             );

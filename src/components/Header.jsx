@@ -2,16 +2,19 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import headerImg from '../assets/header-img.png';
 import './Header.scss';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
 import { auth } from '../firebase';
+import GameListContext from '../context/GameListContext';
 
 const Header = () => {
-  // const navigate = useNavigate();
+  const { setUserData } = React.useContext(GameListContext);
+  const navigate = useNavigate();
   const { currentUser } = getAuth();
 
   function handleLogout() {
     signOut(auth).then(() => {
+      setUserData({ bookmarks: [], ratings: {} });
       navigate('/');
     });
   }
@@ -19,6 +22,7 @@ const Header = () => {
   return (
     <header className="header">
       <nav className="header__nav">
+        <NavLink to="/">Home</NavLink>
         {!currentUser && <NavLink to="/auth/signup">Sign up</NavLink>}
         {!currentUser && <NavLink to="/auth/login">Login</NavLink>}
         {currentUser && <NavLink onClick={handleLogout}>Logout</NavLink>}

@@ -1,0 +1,47 @@
+.preferences {
+  display: flex;
+  align-items: center;
+  border-radius: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  width: fit-content;
+  padding: 0.1rem 0.5rem;
+  background-color: #001533;
+
+  .rating,
+  .rating--active,
+  .bookmark,
+  .bookmark--active {
+    visibility: hidden;
+    cursor: pointer;
+    font-size: 2rem;
+    line-height: 2rem;
+    width: 2rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  .rating::before {
+    content: "\2606";
+    visibility: visible;
+    color: goldenrod;
+  }
+
+  .rating--active::before {
+    content: "\2605";
+    visibility: visible;
+    color: goldenrod;
+  }
+
+  .bookmark::before {
+    content: "\2661";
+    visibility: visible;
+    color: red;
+  }
+
+  .bookmark--active::before {
+    visibility: visible;
+    content: "\2665";
+    color: red;
+  }
+}

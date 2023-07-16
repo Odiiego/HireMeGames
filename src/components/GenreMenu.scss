@@ -3,50 +3,52 @@
   flex-direction: row;
   align-items: center;
   margin-top: 1rem;
+  max-width: 950px;
 
   &__tag {
     display: flex;
     flex-flow: wrap row;
-    font-family: 'Teko', sans-serif;
+    font-family: "Teko", sans-serif;
     text-align: right;
     width: 21ch;
     font-size: 1.75rem;
     line-height: 1.75rem;
-    color: #599BCF;
-    padding: 2rem 1.5rem;
-    border-right: 5px solid #599BCF;
+    color: #599bcf;
+    padding: 2.5rem 0.5rem 2.5rem 0;
+    border-right: 5px solid #599bcf;
   }
 
   &__btn__container {
     &__btn:hover {
-      color: #599BCF;
+      color: #599bcf;
     }
 
-    &__btn, &__btn--active {
+    &__btn,
+    &__btn--active {
       height: 2rem;
       line-height: 1.5rem;
       font-size: 1.1rem;
-      font-family: 'Teko', sans-serif;
+      font-family: "Teko", sans-serif;
       font-weight: bold;
       text-transform: uppercase;
       background-color: #001533;
-      border: 2px solid #B3FFFB;
+      border: 2px solid #b3fffb;
       border-radius: 2rem;
       width: 16ch;
-      padding: .2rem 0;
+      padding: 0.2rem 0;
       margin: 0 0 10px 10px;
-      color: #B3FFFB;
+      color: #b3fffb;
       cursor: pointer;
 
       &--active {
-        background-color: #B3FFFB;
+        background-color: #b3fffb;
         color: #001533;
       }
     }
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   .navbar {
     display: flex;
     flex-direction: column;
@@ -63,12 +65,14 @@
 
     &__btn__container {
       display: flex;
+      width: 100%;
       flex-flow: row wrap;
       justify-content: center;
 
-      &__btn, &__btn--active {
+      &__btn,
+      &__btn--active {
         margin: 0;
-        border: 2px solid #B3FFFB;
+        border: 2px solid #b3fffb;
         border-radius: 0;
       }
     }

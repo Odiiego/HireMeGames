@@ -3,29 +3,29 @@
   height: 2.5rem;
   line-height: 2.4rem;
   font-size: 1.1rem;
-  font-family: 'Teko', sans-serif;
+  font-family: "Teko", sans-serif;
   font-weight: bold;
   text-transform: uppercase;
   background-color: #001533;
-  border: 2px solid #B3FFFB;
-  color: #B3FFFB;
+  border: 2px solid #b3fffb;
+  color: #b3fffb;
   cursor: pointer;
 
   &:hover {
-    color: #599BCF;
+    color: #599bcf;
   }
 
   &--active {
-    background-color: #B3FFFB;
+    background-color: #b3fffb;
     color: #001533;
   }
 }
 
 .filter-control-container {
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: center;
-  border-bottom: 2px solid #B3FFFB;
+  border-bottom: 2px solid #b3fffb;
 }
 
 .filter-control {
@@ -36,12 +36,12 @@
   align-items: start;
   box-sizing: border-box;
   width: fit-content;
-  border: 2px solid #B3FFFB;
+  border: 2px solid #b3fffb;
   border-bottom: none;
   border-radius: 30px 30px 0 0;
   height: 3.1rem;
   margin-top: 1rem;
-  background-color: #010E21;
+  background-color: #010e21;
 
   &__btn {
     &-container {
@@ -53,7 +53,8 @@
       height: 2.5rem;
     }
 
-    &--favorites, &--favorites--active {
+    &--favorites,
+    &--favorites--active {
       @include control-btn;
       padding-left: 1.2rem;
       border-radius: 2rem 0 0 2rem;
@@ -61,11 +62,12 @@
 
     &--favorites--active {
       &:hover {
-        color: #001533
+        color: #001533;
       }
     }
 
-    &--ratings, &--ratings--active {
+    &--ratings,
+    &--ratings--active {
       @include control-btn;
       padding-right: 1.2rem;
       border-radius: 0 2rem 2rem 0;
@@ -74,11 +76,12 @@
     &--ratings--active {
       border-right: 2px solid #001533;
       &:hover {
-        color: #001533
+        color: #001533;
       }
     }
 
-    &--ratings-direction, &--ratings-direction--active {
+    &--ratings-direction,
+    &--ratings-direction--active {
       @include control-btn;
       position: absolute;
       right: 0;
@@ -88,18 +91,41 @@
       height: 2rem;
       border-radius: 2rem;
       line-height: 1.5rem;
-      transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-      
+
       &:hover {
         background-color: #001533;
-        color: #B3FFFB;
+        color: #b3fffb;
       }
     }
 
     &--ratings-direction--active {
       transform: rotate(180deg);
       background-color: #001533;
-      color: #B3FFFB;
+      color: #b3fffb;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .filter-control {
+    &__btn {
+      &-container {
+        width: 19ch;
+      }
+
+      &--favorites,
+      &--favorites--active {
+        @include control-btn;
+        width: 19ch;
+        padding-left: 2.2rem;
+      }
+
+      &--ratings,
+      &--ratings--active {
+        @include control-btn;
+        width: 19ch;
+        padding-right: 2.2rem;
+      }
     }
   }
 }
