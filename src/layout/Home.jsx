@@ -6,10 +6,11 @@ import GameListContext from '../context/GameListContext';
 
 const Home = () => {
   const { data, userData } = React.useContext(GameListContext);
+
   return (
     <>
       <Header />
-      <MainSection />
+      {data && <MainSection props={(data, userData)} />}
     </>
   );
 };

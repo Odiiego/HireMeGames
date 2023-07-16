@@ -1,11 +1,16 @@
 import React from 'react';
-import './FilterControl.scss';
 
-function FilterControl({
-  toggleFilterBookmarkedStatus,
-  toggleSortingDirection,
-  toggleSortByRating,
-}) {
+import './FilterControl.scss';
+import GameListContext from '../context/GameListContext';
+import useGameList from '../hooks/useGameList';
+
+function FilterControl({}) {
+  const { data, userData } = React.useContext(GameListContext);
+  const {
+    toggleFilterBookmarkedStatus,
+    toggleSortByRating,
+    toggleSortingDirection,
+  } = useGameList(data, userData);
   return (
     <div className="filter-control-container">
       <nav className="filter-control">

@@ -2,32 +2,45 @@ import React from 'react';
 
 import useUpdateFirebase from './useUpdateFirebase';
 
+import GameListContext from '../context/GameListContext';
+import createGenreList from '../utils/createGenreList';
+
 function useGameList(
   games,
   preferences = { ratings: null, bookmarks: null },
   filterGameList = { genre: null, title: null },
 ) {
-  const [sortByRating, setSortByRating] = React.useState(false);
-  const [sortingDirection, setSortingDirection] = React.useState(true);
-  const [filterBookmarkedStatus, setFilterBookmarkedStatus] =
-    React.useState(false);
+  const {
+    setGenreList,
+    sortByRating,
+    setSortByRating,
+    sortingDirection,
+    setSortingDirection,
+    filterBookmarkedStatus,
+    setFilterBookmarkedStatus,
+  } = React.useContext(GameListContext);
 
   const { ratings, bookmarks } = preferences;
   const { genre, title } = filterGameList;
   let gameList = games.sort((a, b) => a.id - b.id);
+  let genreArr;
   let errorMessage = null;
 
+  React.useEffect(() => {
+    setGenreList(genreArr);
+  }, [genreArr]);
+
   function toggleSortingDirection({ target }) {
-    target.className += sortingDirection
-      ? '--active'
+    target.className = sortingDirection
+      ? `${target.className}--active`
       : target.className.replace('--active', '');
     setSortingDirection(!sortingDirection);
     return sortingDirection;
   }
 
   function toggleFilterBookmarkedStatus({ target }) {
-    target.className += filterBookmarkedStatus
-      ? '--active'
+    target.className = !filterBookmarkedStatus
+      ? `${target.className}--active`
       : target.className.replace('--active', '');
 
     setFilterBookmarkedStatus(!filterBookmarkedStatus);
@@ -35,8 +48,8 @@ function useGameList(
   }
 
   function toggleSortByRating({ target }) {
-    target.className += sortByRating
-      ? '--active'
+    target.className = !sortByRating
+      ? `${target.className}--active`
       : target.className.replace('--active', '');
 
     setSortByRating(!sortByRating);
@@ -55,6 +68,9 @@ function useGameList(
         : { ...game, bookmarked: false };
     return game;
   });
+
+  //criar uma lista dos gêneros ordenada pelo id dos jogos:
+  genreArr = createGenreList(gameList);
 
   // organizar gameListay por Rating:
   if (sortByRating) {

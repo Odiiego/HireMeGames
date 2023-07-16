@@ -11,6 +11,11 @@ import Home from './layout/Home';
 
 function App() {
   const [userData, setUserData] = React.useState();
+  const [genreList, setGenreList] = React.useState();
+  const [sortByRating, setSortByRating] = React.useState(false);
+  const [sortingDirection, setSortingDirection] = React.useState(true);
+  const [filterBookmarkedStatus, setFilterBookmarkedStatus] =
+    React.useState(false);
   const { data, error, loading, request } = useFetch();
   const { currentUser } = getAuth();
 
@@ -52,8 +57,16 @@ function App() {
         data,
         error,
         loading,
+        genreList,
+        setGenreList,
         userData,
         setUserData,
+        sortByRating,
+        setSortByRating,
+        sortingDirection,
+        setSortingDirection,
+        filterBookmarkedStatus,
+        setFilterBookmarkedStatus,
       }}
     >
       <BrowserRouter>
