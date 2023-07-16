@@ -62,3 +62,12 @@
     }
   }
 }
+
+@media (max-width: 660px) {
+  .form__input {
+    &--email,
+    &--password {
+      width: 25ch;
+    }
+  }
+}
