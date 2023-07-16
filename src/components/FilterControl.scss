@@ -84,8 +84,9 @@
     &--ratings-direction--active {
       @include control-btn;
       position: absolute;
-      right: 0.25;
+      right: 0;
       top: 0.25rem;
+      margin-right: 0.25rem;
       width: 2rem;
       height: 2rem;
       border-radius: 2rem;
@@ -109,45 +110,26 @@
   .filter-control {
     &__btn {
       &-container {
-        width: 23ch;
+        width: 19ch;
       }
 
       &--favorites,
       &--favorites--active {
         @include control-btn;
-        width: 23ch;
+        width: 19ch;
         padding-left: 2.2rem;
       }
 
       &--ratings,
       &--ratings--active {
         @include control-btn;
-        width: 23ch;
+        width: 19ch;
         padding-right: 2.2rem;
       }
-    }
-  }
-}
 
-@media (max-width: 400px) {
-  .filter-control {
-    &__btn {
-      &-container {
-        width: 23ch;
-      }
-
-      &--favorites,
-      &--favorites--active {
-        @include control-btn;
-        width: 23ch;
-        padding-left: 2.2rem;
-      }
-
-      &--ratings,
-      &--ratings--active {
-        @include control-btn;
-        width: 23ch;
-        padding-right: 2.2rem;
+      &--ratings-direction,
+      &--ratings-direction--active {
+        margin-right: 0.5rem;
       }
     }
   }
