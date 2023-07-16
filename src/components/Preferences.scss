@@ -42,6 +42,7 @@
   .bookmark--active::before {
     visibility: visible;
     content: "\2665";
+    transform: scale(0.8);
     color: red;
   }
 }

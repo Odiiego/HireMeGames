@@ -84,9 +84,8 @@
     &--ratings-direction--active {
       @include control-btn;
       position: absolute;
-      right: 0;
+      right: 0.25;
       top: 0.25rem;
-      margin-right: 0.25rem;
       width: 2rem;
       height: 2rem;
       border-radius: 2rem;
@@ -110,13 +109,13 @@
   .filter-control {
     &__btn {
       &-container {
-        width: 19ch;
+        width: 23ch;
       }
 
       &--favorites,
       &--favorites--active {
         @include control-btn;
-        width: 19ch;
+        width: 23ch;
         padding-left: 2.2rem;
       }
 
